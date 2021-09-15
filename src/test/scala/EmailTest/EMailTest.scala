@@ -8,15 +8,15 @@ class EMailTest extends AnyFunSuite{
   test("Check Recipient's Name that it does not contain s"){
 
     val expectedValue = true
-    val resultingValue = email.nameOfRecipient("harshrawat1148@gmail.com")
-    intercept(resultingValue == expectedValue)
+    val resultingValue = email.nameOfRecipient("harhrawat1148@gmail.com")
+    assert(resultingValue == expectedValue)
     //assert in place of intercept
   }
 
   test("Recipient's Name with Special Characters throw  Exception"){
 
     intercept[IllegalArgumentException]{
-      email.nameOfRecipient("harshrawat1148@gmail.com")
+      email.nameOfRecipient("harshrawat11#48@gmail.com")
     }
   }
 
@@ -25,14 +25,14 @@ class EMailTest extends AnyFunSuite{
 
     val expectedValue= true
     val resultingValue = email.checkTheSymbol("harshrawat5287@gmail.com")
-    intercept(resultingValue == expectedValue)
+    assert(resultingValue == expectedValue)
   }
 
 
   test("Email address without '@' throws  Exception"){
 
     intercept[IllegalArgumentException]{
-      email.checkTheSymbol("harshrawat1148@gmail.com")
+      email.checkTheSymbol("harshrawat1148gmail.com")
     }
   }
 
@@ -48,7 +48,7 @@ class EMailTest extends AnyFunSuite{
   test("Domain Name with Special Characters throws  Exception"){
 
     intercept[IllegalArgumentException]{
-      email.checkDomain("harshrawat1148@gmail.com")
+      email.checkDomain("harshrawat1148@gmail-com")
     }
   }
 
@@ -57,13 +57,13 @@ class EMailTest extends AnyFunSuite{
 
     val expectedValue= true
     val resultingValue = email.topLevelDomain("harshrawat1148@gmail.com")
-    intercept(resultingValue == expectedValue)
+    assert(resultingValue == expectedValue)
   }
 
   test("If Top Level Domain is not .net/.org/.com it throws Exception"){
 
     intercept[IllegalArgumentException]{
-      email.topLevelDomain("harshrawat5287@gmail.com")
+      email.topLevelDomain("harshrawat5287@gmail.edu")
     }
   }
 }
